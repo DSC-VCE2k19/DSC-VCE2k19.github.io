@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <title>GCP|MySQL and phpmyadmin in VM</title>
+
+</head>
+
+<body>
+    <p><strong>GCP &ndash; Native MySQL and PhpMyAdmin in VM</strong></p>
+    <ol>
+        <li>Create Ubuntu VM and go to SSH</li>
+        <li>Update and install Apache2, php
+            <ol>
+                <li>sudo apt-get update</li>
+                <li>sudo apt-get install apache2 php libapache2-mod-php</li>
+            </ol>
+        </li>
+        <li>Run Apache Server
+            <ol start="2">
+                <li>sudo systemctl start apache2.service</li>
+            </ol>
+        </li>
+        <li>Create a file and ping that on server
+            <ol>
+                <li>sudo sh -c &lsquo;echo &ldquo;Welcome&rdquo; &gt; /var/www/html/phpinfo.php&rsquo;</li>
+            </ol>
+        </li>
+        <li>Install MySQL
+            <ol>
+                <li>sudo apt-get install -y mysql-server</li>
+            </ol>
+        </li>
+        <li>Improve MySQL installation security
+            <ol>
+                <li>sudo mysql_secure_installation</li>
+            </ol>
+        </li>
+        <li>Connect to MySQL
+            <ol>
+                <li>sudo mysql -u root -p</li>
+            </ol>
+        </li>
+        <li>Install phpMyAdmin
+            <ol>
+                <li>sudo apt-get install phpmyadmin</li>
+            </ol>
+        </li>
+        <li>Configure phpMyAdmin (in GUI kind of thing)
+            <ol>
+                <li>Select apache2</li>
+                <li>Select yes to use dbconfig common for database setup</li>
+                <li>Enter the database administrator&rsquo;s password that you chose during MySQL configuration</li>
+                <li>Enter a password for phpMyAdmin application</li>
+            </ol>
+        </li>
+        <li>In case of wrong config, reconfigure using
+            <ol>
+                <li>sudo dpkg-reconfigure phpmyadmin</li>
+            </ol>
+        </li>
+        <li>Login into phpMyAdmin at <em>http://EXTERNAL_IP/phpmyadmin</em> using phpMyAdmin as user</li>
+        <li>Upload file using google console or SSH</li>
+        <li>Copy/move those files to /var/www/html</li>
+        <li>Ping <em>http://PUBLIC_IP/index.php</em></li>
+    </ol>
+</body>
+
+</html>>
